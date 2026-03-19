@@ -1,6 +1,7 @@
 plugins {
   id "org.owasp.dependencycheck" version "12.2.0"
   id "java"
+  id "maven-publish"
 }
 
 repositories {
@@ -10,4 +11,13 @@ repositories {
 
 dependencies {
    implementation 'org.json:json:20251224'
+   testImplementation 'org.junit.jupiter:junit-jupiter:6.0.3'
 } 
+
+sourceSets {
+	test {
+		java {
+			srcDirs = ["src/test/java"]
+		}
+	}
+}
