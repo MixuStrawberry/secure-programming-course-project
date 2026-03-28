@@ -1,12 +1,19 @@
 package dependency;
 
+import java.util.List;
 import java.util.Objects;
 
+import vulnerability.Vulnerability;
+
+/**
+ * Stores dependency related information and vulnerabilities.
+ */
 public class Dependency {
 	
 	private String group;
 	private String module;
 	private String version;
+	private List<Vulnerability> vulnerabilities;
 	
 	
 	public String getGroup() {
@@ -32,12 +39,20 @@ public class Dependency {
 	public void setVersion(String version) {
 		this.version = version;
 	}
-	
+
+	public List<Vulnerability> getVulnerabilities() {
+		return vulnerabilities;
+	}
+
+	public void setVulnerabilities(List<Vulnerability> vulnerabilities) {
+		this.vulnerabilities = vulnerabilities;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(group, module, version);
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -50,5 +65,5 @@ public class Dependency {
 		return Objects.equals(group, other.group) && Objects.equals(module, other.module)
 				&& Objects.equals(version, other.version);
 	}
-
+	
 }

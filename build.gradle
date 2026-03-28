@@ -5,13 +5,21 @@ plugins {
 }
 
 repositories {
-    // Using public maven central for the course work
+	 // Using public maven central for the course work
      mavenCentral()  
+     // For gradle tooling api
+     maven { url = 'https://repo.gradle.org/gradle/libs-releases' }
 }
 
 dependencies {
    implementation 'org.json:json:20251224'
+   implementation 'org.apache.logging.log4j:log4j-api:2.25.3'
+   implementation 'org.apache.logging.log4j:log4j-core:2.25.3'
    testImplementation 'org.junit.jupiter:junit-jupiter:6.0.3'
+   implementation 'org.gradle:gradle-tooling-api:9.2.1'
+   implementation 'com.github.spotbugs:spotbugs:4.9.8'
+   implementation 'com.github.spotbugs:spotbugs-annotations:4.9.8'
+   
 } 
 
 sourceSets {

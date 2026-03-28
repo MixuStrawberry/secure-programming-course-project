@@ -1,9 +1,11 @@
-# Java Dependency and Vulnerability scanner
+# Java Dependency and Vulnerability scanner <br>(Maven and Gradle projects)
 
 This project is done as a part of Tampere University's Secure Programming course (COMP.SEC.300).
 
-## Purpose
+## Support
+Currently supports only Maven and Gradle projects. 
 
+## Purpose
 Project scans given project folder, finds dependencies, uses https://nvd.nist.gov/vuln database to fetch vulnerabilities <br>
 while also providing basic static code analysis for the project.
 
@@ -12,7 +14,6 @@ while also providing basic static code analysis for the project.
 2. Double click dvs.bat
 
 ## Technologies
-
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
