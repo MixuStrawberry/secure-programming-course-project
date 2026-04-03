@@ -1,0 +1,27 @@
+package properties;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import java.io.IOException;
+import java.util.Properties;
+
+import org.junit.jupiter.api.Test;
+
+import Cli.DependencyVulnerabilityScanner;
+
+public class TestProperties {
+
+	@Test
+	public void testPropertiesShouldContainScanForVulnerabilitiesKey() {
+		DependencyVulnerabilityScanner scanner = new DependencyVulnerabilityScanner();
+		try {
+			Properties testProperties = scanner.readProperties("testDependencyScanner.properties");
+			assertTrue(testProperties.containsKey("scanForVulnerabilities"));
+		} catch (IOException e) {
+			fail("Could not read properties.");
+		}
+	
+	}
+	
+}

@@ -34,7 +34,7 @@ public class MavenDependencyController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return dependencies;
 	}
 
 }

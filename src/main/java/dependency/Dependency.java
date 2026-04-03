@@ -13,6 +13,7 @@ public class Dependency {
 	private String group;
 	private String module;
 	private String version;
+	private String filePath;
 	private List<Vulnerability> vulnerabilities;
 	
 	
@@ -48,9 +49,17 @@ public class Dependency {
 		this.vulnerabilities = vulnerabilities;
 	}
 
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(group, module, version);
+		return Objects.hash(filePath, group, module, version, vulnerabilities);
 	}
 
 	@Override
@@ -62,8 +71,9 @@ public class Dependency {
 		if (getClass() != obj.getClass())
 			return false;
 		Dependency other = (Dependency) obj;
-		return Objects.equals(group, other.group) && Objects.equals(module, other.module)
-				&& Objects.equals(version, other.version);
+		return Objects.equals(filePath, other.filePath) && Objects.equals(group, other.group)
+				&& Objects.equals(module, other.module) && Objects.equals(version, other.version)
+				&& Objects.equals(vulnerabilities, other.vulnerabilities);
 	}
 	
 }
