@@ -21,7 +21,7 @@ while also providing basic static code analysis for the project.
 After running the program input the project folder or jar-file which is to be analyzed. <br>
 If you want to customize the tasks please refer to the [Configuring](#configuring-chapter) chapter. 
 
-<h3 id="configure-chapter">Configuring</h3>
+### Configuring
 This program includes dependencyScanner.properties file, which has modifiable values to customize the tasks of the program. <br>
 Changing the value of scanForVulnerabilities value to true, the given project or jar file is searched for vulnerabilities using the <br> NVD vulnerability database (https://nvd.nist.gov/vuln). It is important to provide an NVD API key if you plan on using the NVD <br> vulnerability database in order to avoid errors and in order to not hit the request limits of the API. <br><br>
 *A new NVD API key can be requested at https://nvd.nist.gov/developers/request-an-api-key*
