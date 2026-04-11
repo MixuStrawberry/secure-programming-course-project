@@ -16,7 +16,7 @@ public class TestProperties {
 	public void testPropertiesShouldContainScanForVulnerabilitiesKey() {
 		DependencyVulnerabilityScanner scanner = new DependencyVulnerabilityScanner();
 		try {
-			Properties testProperties = scanner.readProperties("testDependencyScanner.properties");
+			Properties testProperties = PropertyFileReader.readProperties("testDependencyScanner.properties");
 			assertTrue(testProperties.containsKey("scanForVulnerabilities"));
 		} catch (IOException e) {
 			fail("Could not read properties.");

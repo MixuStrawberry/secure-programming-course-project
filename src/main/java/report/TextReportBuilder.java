@@ -1,22 +1,23 @@
 package report;
 
-import java.util.List;
-
-import dependency.Dependency;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TextReportBuilder implements IReportBuilder {
 	
-	private List<Dependency> dependencies;
+	private static final String REPORTS_STATIC_CODE_ANALYSIS_REPORT_TXT = "reports/staticCodeAnalysisReport.txt";
 
-	public TextReportBuilder(List<Dependency> dependencies) {
-		this.dependencies = dependencies;
+	private static final Logger logger = LoggerFactory.getLogger(TextReportBuilder.class);
+	
+	private String reportString;;
+
+	public TextReportBuilder(String reportString) {
+		this.reportString = reportString;
 	}
 
 	@Override
 	public String build() {
-		for(Dependency dependency : dependencies) {
-			
-		}
+//	    BufferedWriter writer = new BufferedWriter(new FileWriter(REPORTS_STATIC_CODE_ANALYSIS_REPORT_TXT));
 		return null;
 	}
 }

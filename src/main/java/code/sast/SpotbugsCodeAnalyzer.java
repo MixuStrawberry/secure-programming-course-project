@@ -2,6 +2,11 @@ package code.sast;
 
 import java.io.IOException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.esotericsoftware.minlog.Log;
+
 import edu.umd.cs.findbugs.BugCollectionBugReporter;
 import edu.umd.cs.findbugs.BugInstance;
 import edu.umd.cs.findbugs.DetectorFactoryCollection;
@@ -11,6 +16,8 @@ import edu.umd.cs.findbugs.Project;
 import edu.umd.cs.findbugs.config.UserPreferences;
 
 public class SpotbugsCodeAnalyzer {
+	
+	private static final Logger logger = LoggerFactory.getLogger(SpotbugsCodeAnalyzer.class);
 	
 	public static void main(String[] args) {
 		SpotbugsCodeAnalyzer analyzer = new SpotbugsCodeAnalyzer();
@@ -45,6 +52,7 @@ public class SpotbugsCodeAnalyzer {
         
         // Setting a priority which tells spotbugs to show bugs rated Normal or higher
 		int normalPriority = Priorities.NORMAL_PRIORITY;
+		
 		// Creating a new BugReported in order to specify the priority threshold
         BugCollectionBugReporter bugCollectionBugReporter = new BugCollectionBugReporter(project);
         bugCollectionBugReporter.setPriorityThreshold(normalPriority);
@@ -55,12 +63,8 @@ public class SpotbugsCodeAnalyzer {
         try {
         	// Executing engine, this method starts the actual bug check
 			spotbugsEngine.execute();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			Log.error("Could not read given project jar file.", e);
 		}
         
         // Using StringBuilder to collect bugs with their information to a string

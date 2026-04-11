@@ -15,6 +15,7 @@ dependencies {
    implementation 'org.json:json:20251224'
    implementation 'org.apache.logging.log4j:log4j-api:2.25.3'
    implementation 'org.apache.logging.log4j:log4j-core:2.25.3'
+   implementation 'org.slf4j:slf4j-simple:2.0.17'
    testImplementation 'org.junit.jupiter:junit-jupiter:6.0.3'
    implementation 'org.gradle:gradle-tooling-api:9.2.1'
    implementation 'com.github.spotbugs:spotbugs:4.9.8'
@@ -26,6 +27,11 @@ dependencies {
 tasks.register('copyDependencies', Copy) {
     from configurations.runtimeClasspath
     into "$buildDir/libs-deps"
+}
+
+dependencyCheck {
+    autoUpdate = false
+    format = 'ALL'
 }
 
 sourceSets {
