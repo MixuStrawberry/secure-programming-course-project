@@ -1,6 +1,7 @@
 package report;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 
 import org.slf4j.Logger;
@@ -12,6 +13,9 @@ public class TextReportWriter {
 	
 	public void writeToFile(String fileName, String reportText) {
 	    try {
+	    	File textReportFile = new File(fileName);
+	    	textReportFile.createNewFile();
+	    	
 		    BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
 		    writer.write(reportText);
 		    
