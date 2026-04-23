@@ -27,7 +27,7 @@ public class NvdNistConnector {
 		this.apiKey = apiKey;
 	}
 	
-	public void buildQuery(Set<dependency.Dependency> dependencies) {
+	public void buildQuery(Set<dependency.Dependency> dependencies, String htmlReportPath) {
         Settings settings = new Settings();
         settings.setStringIfNotEmpty("data.directory", "dc-data");
         settings.setStringIfNotEmpty("nvd.api.key", apiKey);
@@ -52,7 +52,7 @@ public class NvdNistConnector {
             // Analyze dependencies (this triggers CVE matching)
             try {
 				engine.analyzeDependencies();
-	            engine.writeReports("MyApp", new File("C:\\Users\\miksu\\COMPSEC300\\repo\\secure-programming-course-project\\reports"), "HTML", new ExceptionCollection());
+	            engine.writeReports("MyApp", new File(htmlReportPath), "HTML", new ExceptionCollection());
 			} catch (ExceptionCollection e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
