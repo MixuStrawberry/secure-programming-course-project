@@ -1,7 +1,7 @@
 plugins {
   id "org.owasp.dependencycheck" version "12.2.0"
   id "java"
-  id "maven-publish"
+  id 'application'
 }
 
 repositories {
@@ -40,4 +40,24 @@ sourceSets {
 			srcDirs = ["src/test/java"]
 		}
 	}
+}
+
+application {
+    mainClass = 'Cli.DependencyVulnerabilityScanner'
+}
+
+jar {
+  manifest {
+    attributes 'Main-Class': application.mainClass
+  }
+}
+
+distributions {
+    main {
+        distributionBaseName = 'DependencyVulnerabilityScanner'
+        distributionClassifier = 'Exercise-Work'
+        contents {
+            from 'config'
+        }
+    }
 }

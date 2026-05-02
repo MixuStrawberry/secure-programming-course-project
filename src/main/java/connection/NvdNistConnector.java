@@ -31,7 +31,7 @@ public class NvdNistConnector {
         Settings settings = new Settings();
         settings.setStringIfNotEmpty("data.directory", "dc-data");
         settings.setStringIfNotEmpty("nvd.api.key", apiKey);
-        settings.setStringIfNotEmpty("odc.autoupdate", "false");
+        settings.setStringIfNotEmpty("odc.autoupdate", "true");
         
         Engine engine = null;
 

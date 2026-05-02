@@ -1,18 +1,24 @@
 package properties;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class PropertyFileReader {
+	
+	private static final Logger logger = LoggerFactory.getLogger(PropertyFileReader.class);
 	
 	public static Properties readProperties(String propertiesFileName) throws IOException {
 		Properties properties = new Properties();
-		ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		InputStream inputStream = loader.getResourceAsStream(propertiesFileName);
-		if(inputStream != null) {
+		try(FileInputStream inputStream = new FileInputStream(propertiesFileName)) {
 			properties.load(inputStream);
+		} catch(Exception e) {
+			logger.error("Could not read dependencyScanner.properties.");
 		}
-		return properties;
+		return properties; 
 	}
 }

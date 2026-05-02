@@ -14,6 +14,7 @@ public class TextReportWriter {
 	public void writeToFile(String fileName, String reportText) {
 	    try {
 	    	File textReportFile = new File(fileName);
+	    	textReportFile.getParentFile().mkdirs();
 	    	textReportFile.createNewFile();
 	    	
 		    BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
