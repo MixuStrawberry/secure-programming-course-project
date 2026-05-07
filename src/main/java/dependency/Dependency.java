@@ -1,9 +1,6 @@
 package dependency;
 
-import java.util.List;
 import java.util.Objects;
-
-import vulnerability.Vulnerability;
 
 /**
  * Stores dependency related information and vulnerabilities.
@@ -14,7 +11,6 @@ public class Dependency {
 	private String module;
 	private String version;
 	private String filePath;
-	private List<Vulnerability> vulnerabilities;
 	
 	
 	public String getGroup() {
@@ -41,14 +37,6 @@ public class Dependency {
 		this.version = version;
 	}
 
-	public List<Vulnerability> getVulnerabilities() {
-		return vulnerabilities;
-	}
-
-	public void setVulnerabilities(List<Vulnerability> vulnerabilities) {
-		this.vulnerabilities = vulnerabilities;
-	}
-
 	public String getFilePath() {
 		return filePath;
 	}
@@ -59,21 +47,23 @@ public class Dependency {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(filePath, group, module, version, vulnerabilities);
+		return Objects.hash(filePath, group, module, version);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Dependency other = (Dependency) obj;
 		return Objects.equals(filePath, other.filePath) && Objects.equals(group, other.group)
-				&& Objects.equals(module, other.module) && Objects.equals(version, other.version)
-				&& Objects.equals(vulnerabilities, other.vulnerabilities);
+				&& Objects.equals(module, other.module) && Objects.equals(version, other.version);
 	}
 	
 }

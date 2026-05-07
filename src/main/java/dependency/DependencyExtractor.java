@@ -29,7 +29,6 @@ public class DependencyExtractor {
 				GradleDependencyController gradleDependencyController = new GradleDependencyController();
 				projectDependencies.addAll(gradleDependencyController.findDependencies(input));
 			} else if(file.getName().endsWith(".pom")) {
-				// TODO Käytä Maven projektin riippuvuusskanneria
 				MavenDependencyController mavenDependencyController = new MavenDependencyController();
 				projectDependencies.addAll(mavenDependencyController.findDependencies(file.getAbsolutePath()));
 			}

@@ -14,12 +14,13 @@ import org.owasp.dependencycheck.Engine;
 import org.owasp.dependencycheck.exception.ExceptionCollection;
 import org.owasp.dependencycheck.exception.ReportException;
 import org.owasp.dependencycheck.utils.Settings;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class NvdNistConnector {
-
-	// TODO Remove
-//	private static final String NVD_URL = "https://services.nvd.nist.gov/rest/json/cves/2.0";
+	
+	private static final Logger logger = LoggerFactory.getLogger(NvdNistConnector.class);
 
 	private String apiKey;
 	
@@ -36,7 +37,7 @@ public class NvdNistConnector {
         Engine engine = null;
 
         try {
-            // Initialize engine
+        	// Initialize the engine with the settings created above. 
             engine = new Engine(settings);
             
             List<String> jarFiles = new ArrayList<>();
@@ -46,6 +47,7 @@ public class NvdNistConnector {
                
             String[] jarStringArray = jarFiles.toArray(new String[0]);
             
+            //<--- AI GENERATED CODE
             // Scan the dependencies
             engine.scan(jarStringArray);
 
@@ -53,13 +55,11 @@ public class NvdNistConnector {
             try {
 				engine.analyzeDependencies();
 	            engine.writeReports("MyApp", new File(htmlReportPath), "HTML", new ExceptionCollection());
-			} catch (ExceptionCollection e) {
+	            // END OF AI GENERATED CODE --->
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ReportException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				logger.error("Error while trying to scan project dependencies for vulnerabilities.");
+			} 
         } finally {
         	// After the scan is complete and reports are built close the engine.
             if (engine != null) {

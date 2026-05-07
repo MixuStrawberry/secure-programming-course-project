@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TextReportWriter {
+public class TextReportWriter implements IReportWriter {
 	
 	private static final Logger logger = LoggerFactory.getLogger(TextReportWriter.class);
 	
