@@ -8,15 +8,15 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class MavenDependencyController {
-	public static void main(String[] args) {
-		MavenDependencyController controller = new MavenDependencyController();
-		controller.findDependencies("C:\\Users\\miksu\\COMPSEC300\\repo\\secure-programming-course-project\\junit-jupiter-api-6.0.3.pom.xml");
-	}
+	
+	private static final Logger log = LoggerFactory.getLogger(MavenDependencyController.class);
 	
 	public List<Dependency> findDependencies(String pomFilePath) {
 		List<Dependency> dependencies = new ArrayList<>();
@@ -27,12 +27,9 @@ public class MavenDependencyController {
 			NodeList nodeList = doc.getElementsByTagName("dependency");
 			for(int i = 0; i < nodeList.getLength(); i++) {
 				Node node = nodeList.item(i);
-				
-				System.err.println(node.getAttributes().getNamedItem("group"));
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error("Could not resolve maven dependencies!");
 		}
 		return dependencies;
 	}

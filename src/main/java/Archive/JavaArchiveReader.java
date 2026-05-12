@@ -25,6 +25,7 @@ public class JavaArchiveReader {
 			if(files != null) {
 			    for (File file : files) {
 			       if (file.isDirectory()) {
+			    	   // Going through the next sub-directory recursively.
 			            List<File> projectDependencies = findAllFiles(file.getAbsolutePath());
 			            for(File projectFile : projectDependencies) {
 			            	if(projectFile.isFile()) {

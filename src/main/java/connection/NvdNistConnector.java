@@ -54,10 +54,9 @@ public class NvdNistConnector {
             // Analyze dependencies (this triggers CVE matching)
             try {
 				engine.analyzeDependencies();
-	            engine.writeReports("MyApp", new File(htmlReportPath), "HTML", new ExceptionCollection());
+	            engine.writeReports("MyApp", new File(htmlReportPath), "XML", new ExceptionCollection());
 	            // END OF AI GENERATED CODE --->
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				logger.error("Error while trying to scan project dependencies for vulnerabilities.");
 			} 
         } finally {
