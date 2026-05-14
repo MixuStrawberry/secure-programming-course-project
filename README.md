@@ -2,6 +2,20 @@
 
 This project is done as a part of Tampere University's Secure Programming course (COMP.SEC.300).
 
+## Requirements
+Projects must be compiled before scanning because SpotBugs analyzes Java bytecode (.class files), not source code directly.
+
+### Gradle projects
+Run command line:
+`gradle classes`
+
+### Maven projects
+Run command line:
+```
+mvn compile
+mvn dependency:copy-dependencies
+```
+
 ## Structure of the Program
 The program consists of three main parts, which are command line interface (CLI), dependency vulnerability analysis and static code analysis.<br><br>
 Command line interface (CLI) is accepting two kinds of commands: 
