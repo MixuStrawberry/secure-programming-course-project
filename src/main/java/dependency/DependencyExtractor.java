@@ -28,9 +28,9 @@ public class DependencyExtractor {
 			if("build.gradle".equals(file.getName())) {
 				GradleDependencyController gradleDependencyController = new GradleDependencyController();
 				projectDependencies.addAll(gradleDependencyController.findDependencies(input));
-			} else if(file.getName().endsWith(".pom")) {
+			} else if(file.getName().contains("pom.xml")) {
 				MavenDependencyController mavenDependencyController = new MavenDependencyController();
-				projectDependencies.addAll(mavenDependencyController.findDependencies(file.getAbsolutePath()));
+				projectDependencies.addAll(mavenDependencyController.findDependencies(input));
 			}
 		}
 		return projectDependencies;

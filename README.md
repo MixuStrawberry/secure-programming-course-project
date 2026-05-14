@@ -24,7 +24,8 @@ Command line interface (CLI) is accepting two kinds of commands:
 3. `Help`, which displays help for the program.
 
 ## Support
-Currently supports only Gradle and Maven projects. 
+Currently supports only Gradle and Maven projects, which are compiled.<br>
+**NOTICE!** *Maven projects also need to have target/dependencies folder which contains the jar files of the dependencies.*
 
 ## Purpose
 Project scans given project folder, finds dependency jar-file locations. <br>

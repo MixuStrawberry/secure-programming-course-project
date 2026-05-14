@@ -30,7 +30,6 @@ public class GradleDependencyController {
     		// ══════════ End of AI generated example ══════════
             for(IdeaModule module : project.getModules()) {
             	for(IdeaDependency ideaDependency : module.getDependencies()) {
-            		System.out.println(ideaDependency);
                     Dependency dependency = parseIdeaDependencyString(ideaDependency);
                     resultDependencies.add(dependency);
             	}
@@ -43,32 +42,33 @@ public class GradleDependencyController {
 	}
 	
 	
+	/**
+	 * Utility method which transforms the IdeaDependency objects into human readable format.
+	 * @param dependency - IdeaDependency
+	 * @return - Dependency object
+	 */
 	public Dependency parseIdeaDependencyString(IdeaDependency dependency)  {
 		String dependencyString = dependency.toString();
 		// Parsing group from the dependency String.
 		int gourpStartIndex = dependencyString.indexOf("group='") + "group='".length();
 		int groupEndIndex = dependencyString.indexOf(", name=") - 1;
 		String group = dependencyString.substring(gourpStartIndex, groupEndIndex);
-		System.out.println(group);
 		Dependency resultDependency = new Dependency();
 		resultDependency.setGroup(group);
 		// Parsing name from the dependency String.
 		int nameStartIndex = dependencyString.indexOf(", name='") + ", name='".length();
 		int nameEndIndex = dependencyString.indexOf(", version=") - 1;
 		String name = dependencyString.substring(nameStartIndex, nameEndIndex);
-		System.out.println(name);
 		resultDependency.setModule(name);
 		// Parsing version from the dependency String.
 		int versionStartIndex = dependencyString.indexOf(", version='") + ", version='".length();
 		int versionEndIndex = dependencyString.indexOf("'}'}");
 		String version = dependencyString.substring(versionStartIndex, versionEndIndex);
-		System.out.println(version);
 		resultDependency.setVersion(version);
 		// Parsing jar file location.
 		int fileLocationStartIndex = dependencyString.indexOf("{file=") + "{file=".length();
 		int fileLocationEndIndex = dependencyString.indexOf(", source=");
 		String fileLocation = dependencyString.substring(fileLocationStartIndex, fileLocationEndIndex);
-		System.out.println(fileLocation);
 		resultDependency.setFilePath(fileLocation);
 		return resultDependency;
 	}

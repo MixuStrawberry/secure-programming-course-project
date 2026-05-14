@@ -81,6 +81,9 @@
 //}
 package code.sast;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -143,9 +146,11 @@ public class SpotbugsCodeAnalyzer {
         	// Executing engine, this method starts the actual bug check
 			spotbugsEngine.execute();
 		} catch (Exception e) {
-			logger.error("Could not read given project jar file.", e);
+			logger.error("Could not read given project file."
+					+ "\nRemember to compile the project using 'gradle classes' or 'mvn compile'.", e);
 		}
         
+        // Going through the bugs found by the Spotbugs engine.
         BugCollection bugCollection = spotbugsEngine.getBugReporter().getBugCollection();
         List<Vulnerability> projectIssues = new ArrayList<>();
         if(bugCollection != null) {
@@ -167,6 +172,11 @@ public class SpotbugsCodeAnalyzer {
 	}
 	
 	
+	/**
+	 * Utility method to transform numeric priority into a human readable form.
+	 * @param priority - int
+	 * @return - String 
+	 */
 	private String priorityIntegerToString(int priority) {
 		if(priority < 4) {
 			return "HIGH";

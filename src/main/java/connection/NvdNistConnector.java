@@ -29,6 +29,7 @@ public class NvdNistConnector {
 	}
 	
 	public void buildQuery(Set<dependency.Dependency> dependencies, String htmlReportPath) {
+		// Providing settings for the NVD API.
         Settings settings = new Settings();
         settings.setStringIfNotEmpty("data.directory", "dc-data");
         settings.setStringIfNotEmpty("nvd.api.key", apiKey);
@@ -44,7 +45,8 @@ public class NvdNistConnector {
             for(dependency.Dependency dependency : dependencies) {
             	jarFiles.add(dependency.getFilePath());
             }
-               
+            
+            // Transforming an ArrayList into String array.
             String[] jarStringArray = jarFiles.toArray(new String[0]);
             
             //<--- AI GENERATED CODE
