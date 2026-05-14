@@ -26,6 +26,7 @@ Command line interface (CLI) is accepting two kinds of commands:
 ## Support
 Currently supports only Gradle and Maven projects, which are compiled.<br>
 **NOTICE!** *Maven projects also need to have target/dependencies folder which contains the jar files of the dependencies.*
+**NOTICE!** *The first run with this program might take a long time because NVD API downloads the vulnerability registry.*
 
 ## Purpose
 Project scans given project folder, finds dependency jar-file locations. <br>
