@@ -8,13 +8,10 @@ import java.util.Properties;
 
 import org.junit.jupiter.api.Test;
 
-import Cli.DependencyVulnerabilityScanner;
-
 public class TestProperties {
 
 	@Test
 	public void testPropertiesShouldContainScanForVulnerabilitiesKey() {
-		DependencyVulnerabilityScanner scanner = new DependencyVulnerabilityScanner();
 		try {
 			Properties testProperties = PropertyFileReader.readProperties("testDependencyScanner.properties");
 			assertTrue(testProperties.containsKey("scanForVulnerabilities"));

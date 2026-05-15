@@ -2,7 +2,6 @@ package properties;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 import org.slf4j.Logger;
@@ -16,7 +15,7 @@ public class PropertyFileReader {
 		Properties properties = new Properties();
 		try(FileInputStream inputStream = new FileInputStream(propertiesFileName)) {
 			properties.load(inputStream);
-		} catch(Exception e) {
+		} catch(IOException e) {
 			logger.error("Could not read dependencyScanner.properties.");
 		}
 		return properties; 

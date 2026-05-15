@@ -1,18 +1,12 @@
 package connection;
 
 import java.io.File;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.owasp.dependencycheck.Engine;
 import org.owasp.dependencycheck.exception.ExceptionCollection;
-import org.owasp.dependencycheck.exception.ReportException;
 import org.owasp.dependencycheck.utils.Settings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,10 +50,10 @@ public class NvdNistConnector {
             // Analyze dependencies (this triggers CVE matching)
             try {
 				engine.analyzeDependencies();
-	            engine.writeReports("MyApp", new File(htmlReportPath), "XML", new ExceptionCollection());
+	            engine.writeReports("Scanned project", new File(htmlReportPath), "XML", new ExceptionCollection());
 	            // END OF AI GENERATED CODE --->
 			} catch (Exception e) {
-				logger.error("Error while trying to scan project dependencies for vulnerabilities.");
+				logger.error("Error while trying to scan project dependencies for vulnerabilities.", e);
 			} 
         } finally {
         	// After the scan is complete and reports are built close the engine.
