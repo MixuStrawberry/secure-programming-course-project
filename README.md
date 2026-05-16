@@ -34,9 +34,11 @@ If `scanForVulnerabilities` is configured, uses https://nvd.nist.gov/vuln databa
 while also providing basic static code analysis for the project.
 
 ## Running
-1. Download and extract the project
+**NOTICE!** *Currently works only in Windows OS.*
 
-2. Start the program by running it in your environment using `java -jar secure-programming-course-project.jar`. <br>
+1. Download the release and extract it.
+
+2. Start the program by running it in your environment by starting command line from the extracted folder and typing `bin\secure-programming-course-project.bat`. <br>
 After running the program input the project folder or jar-file which is to be analyzed. <br>
 If you want to customize the tasks please refer to the [Configuring](#configuring-chapter) chapter. 
 
