@@ -16,7 +16,10 @@ public class HelpBuilder {
 		stringBuilder.append("To start the program: type or paste a Gradle or Maven main project folder \nor a single Jar file.\n");
 		stringBuilder.append("--------------------\n");
 		stringBuilder.append("NOTICE! Remember to configure dependencyScanner.properties file!\n");
-		stringBuilder.append("Properties file should at least include your own NVD API key.\nNew NVD API key can be requested from https://nvd.nist.gov/developers/request-an-api-key\n");
+		stringBuilder.append("Properties file should at least include your own NVD API key and path where the results are saved.\nNew NVD API key can be requested from https://nvd.nist.gov/developers/request-an-api-key\n");
+		stringBuilder.append("--------------------\n");
+		stringBuilder.append("For Gradle projects remember to run: gradle classes before using this program.\n");
+		stringBuilder.append("For Maven projects remember to run: mvn compile and mvn dependency:copy-dependencies before using this program.\n");
 		stringBuilder.append("--------------------\n");
 		
 		return stringBuilder.toString();

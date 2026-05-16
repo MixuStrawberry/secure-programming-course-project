@@ -59,6 +59,7 @@ public class NvdNistConnector {
         	// After the scan is complete and reports are built close the engine.
             if (engine != null) {
                 engine.close();
+            	logger.info("NVD API engine closed!");
             }
         }
 	}
