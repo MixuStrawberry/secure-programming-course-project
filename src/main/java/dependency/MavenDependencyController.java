@@ -18,7 +18,7 @@ public class MavenDependencyController {
 	 * @return - List<String> dependencies
 	 */
 	public List<Dependency> findDependencies(String pathToProject) {
-		List<Dependency> dependencies = new ArrayList<>();
+		List<Dependency> dependencies = new ArrayList<>();	
 		File dependencyFolder = new File(pathToProject, "target/dependency");
 		
 		// Logging an error to the user, which indicates that mvn dependency:copy-dependencies has not been run.
@@ -28,12 +28,14 @@ public class MavenDependencyController {
 		} else {	
 			// Going through every file in the given project main folder.
 			File[] dependencyFiles = dependencyFolder.listFiles();
-			for(File file : dependencyFiles) {
-				if(file.getName().endsWith(".jar")) {
-					Dependency dependency = new Dependency();
-					// We only need the path to the file.
-					dependency.setFilePath(file.getAbsolutePath());
-					dependencies.add(dependency);
+			if(dependencyFiles != null) {
+				for(File file : dependencyFiles) {
+					if(file.getName().endsWith(".jar")) {
+						Dependency dependency = new Dependency();
+						// We only need the path to the file.
+						dependency.setFilePath(file.getAbsolutePath());
+						dependencies.add(dependency);
+					}
 				}
 			}
 		}
